@@ -6,6 +6,7 @@
 [![Django versions](https://img.shields.io/badge/Django-3.2-blue?logo=django)](#)
 [![Nginx version](https://img.shields.io/badge/Nginx-1.22-blue?logo=nginx)](#)
 [![Postgres version](https://img.shields.io/badge/PSQL-13-blue?logo=postgresql)](#)
+[![Main Kittygram workflow](https://github.com/andprov/kittygram/actions/workflows/main.yml/badge.svg)](https://github.com/andprov/kittygram/actions/workflows/main.yml)
 
 ## Описание
 - Проект Kittygram позволяет пользователям делиться своими фотографиями котиков и просматривать фотографии котиков других пользователей.
