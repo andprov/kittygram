@@ -1,0 +1,43 @@
+version: '3'
+
+volumes:
+  static:
+  media:
+  pg_data:
+
+services:
+  db:
+    container_name: kitty-db
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  backend:
+    container_name: kitty-backend
+    image: ${BACKEND_IMAGE}
+    env_file: .env
+    volumes:
+      - static:/app/web/backend_static
+      - media:/app/web/mediafiles
+    depends_on:
+      - db
+
+  frontend:
+    container_name: kitty-frontend
+    image: ${FRONTEND_IMAGE}
+    env_file: .env
+    volumes:
+      - static:/app/web/frontend_static
+    command: cp -r /app/build/. /app/web/frontend_static
+
+  gateway:
+    container_name: kitty-gateway
+    image: ${GATEWAY_IMAGE}
+    env_file: .env
+    volumes:
+      - static:/web
+      - media:/web/mediafiles
+    ports:
+      - 9000:80
+    restart: always
